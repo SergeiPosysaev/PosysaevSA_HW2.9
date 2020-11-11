@@ -10,7 +10,15 @@ import Spring
 class DemoAnimationViewController: UIViewController {
     
     static var nextIndexToButton = 0
-    
+    var gradientLayer: CAGradientLayer! {
+        didSet {
+            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+            gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+            gradientLayer.colors = [UIColor.blue.cgColor,
+                                    UIColor.yellow.cgColor]
+        
+        }
+    }
     var presetsAnimation = DemoAnimation.createModels()
     
     // MARK: - IBOutlets
@@ -26,11 +34,21 @@ class DemoAnimationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        gradientLayer = CAGradientLayer()
+        view.layer.insertSublayer(gradientLayer, at: 0)
+        
         updateLabels()
         viewSpring.animate()
         
         btnDemoAnimation.setTitle("next: " + presetsAnimation[DemoAnimationViewController.nextIndexToButton + 1].animationPrezet,
                                   for: .normal)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        gradientLayer.frame = CGRect(x: 0,
+                                     y: 0,
+                                     width: self.view.bounds.size.width,
+                                     height: self.view.bounds.size.height)
     }
     
     private func updateLabels() {
@@ -48,14 +66,14 @@ class DemoAnimationViewController: UIViewController {
     @IBAction func startAnimationButton(_ sender: SpringButton) {
         
         let currentAnimation = presetsAnimation[DemoAnimationViewController.nextIndexToButton]
-
+        
         updateLabels()
         viewSpring.animation = currentAnimation.animationPrezet
         viewSpring.curve = currentAnimation.curves.first ?? "shake"
         viewSpring.damping = 2.5
         viewSpring.velocity = 1.5
         viewSpring.animate()
-
+        
         if DemoAnimationViewController.nextIndexToButton < presetsAnimation.count - 1 {
             DemoAnimationViewController.nextIndexToButton += 1
         } else {
