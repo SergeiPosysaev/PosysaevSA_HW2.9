@@ -3,17 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		A3F249EDFBDB77EC78239C66 /* Pods_PosysaevSA_HW2_9.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2E900B3B3A9E25273AC1175 /* Pods_PosysaevSA_HW2_9.framework */; };
 		F97A1AD5255A85C2005615C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97A1AD4255A85C2005615C2 /* AppDelegate.swift */; };
 		F97A1AD7255A85C2005615C2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97A1AD6255A85C2005615C2 /* SceneDelegate.swift */; };
-		F97A1AD9255A85C2005615C2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97A1AD8255A85C2005615C2 /* ViewController.swift */; };
+		F97A1AD9255A85C2005615C2 /* DemoAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97A1AD8255A85C2005615C2 /* DemoAnimationViewController.swift */; };
 		F97A1ADC255A85C2005615C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F97A1ADA255A85C2005615C2 /* Main.storyboard */; };
 		F97A1ADE255A85C3005615C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F97A1ADD255A85C3005615C2 /* Assets.xcassets */; };
 		F97A1AE1255A85C3005615C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F97A1ADF255A85C3005615C2 /* LaunchScreen.storyboard */; };
+		F98C3951255B2198008C5AA1 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98C3950255B2198008C5AA1 /* Animation.swift */; };
+		F98C3955255B2499008C5AA1 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98C3954255B2499008C5AA1 /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,11 +25,13 @@
 		F97A1AD1255A85C2005615C2 /* PosysaevSA_HW2.9.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PosysaevSA_HW2.9.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F97A1AD4255A85C2005615C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F97A1AD6255A85C2005615C2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F97A1AD8255A85C2005615C2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F97A1AD8255A85C2005615C2 /* DemoAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAnimationViewController.swift; sourceTree = "<group>"; };
 		F97A1ADB255A85C2005615C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F97A1ADD255A85C3005615C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F97A1AE0255A85C3005615C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F97A1AE2255A85C3005615C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F98C3950255B2198008C5AA1 /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
+		F98C3954255B2499008C5AA1 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +60,6 @@
 				C1BFBC13C69B56B17D1E89C2 /* Pods-PosysaevSA_HW2.9.debug.xcconfig */,
 				A1EEC9EFDD677DCA9F6EFCD2 /* Pods-PosysaevSA_HW2.9.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -81,15 +84,33 @@
 		F97A1AD3255A85C2005615C2 /* PosysaevSA_HW2.9 */ = {
 			isa = PBXGroup;
 			children = (
-				F97A1AD4255A85C2005615C2 /* AppDelegate.swift */,
-				F97A1AD6255A85C2005615C2 /* SceneDelegate.swift */,
-				F97A1AD8255A85C2005615C2 /* ViewController.swift */,
-				F97A1ADA255A85C2005615C2 /* Main.storyboard */,
-				F97A1ADD255A85C3005615C2 /* Assets.xcassets */,
-				F97A1ADF255A85C3005615C2 /* LaunchScreen.storyboard */,
 				F97A1AE2255A85C3005615C2 /* Info.plist */,
+				F98C3958255B2644008C5AA1 /* Resources */,
+				F98C3957255B260F008C5AA1 /* ModelsAndServices */,
+				F97A1AD8255A85C2005615C2 /* DemoAnimationViewController.swift */,
+				F97A1ADA255A85C2005615C2 /* Main.storyboard */,
 			);
 			path = PosysaevSA_HW2.9;
+			sourceTree = "<group>";
+		};
+		F98C3957255B260F008C5AA1 /* ModelsAndServices */ = {
+			isa = PBXGroup;
+			children = (
+				F98C3950255B2198008C5AA1 /* Animation.swift */,
+				F98C3954255B2499008C5AA1 /* DataManager.swift */,
+			);
+			path = ModelsAndServices;
+			sourceTree = "<group>";
+		};
+		F98C3958255B2644008C5AA1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F97A1AD4255A85C2005615C2 /* AppDelegate.swift */,
+				F97A1AD6255A85C2005615C2 /* SceneDelegate.swift */,
+				F97A1ADD255A85C3005615C2 /* Assets.xcassets */,
+				F97A1ADF255A85C3005615C2 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,8 +227,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F97A1AD9255A85C2005615C2 /* ViewController.swift in Sources */,
+				F97A1AD9255A85C2005615C2 /* DemoAnimationViewController.swift in Sources */,
+				F98C3955255B2499008C5AA1 /* DataManager.swift in Sources */,
 				F97A1AD5255A85C2005615C2 /* AppDelegate.swift in Sources */,
+				F98C3951255B2198008C5AA1 /* Animation.swift in Sources */,
 				F97A1AD7255A85C2005615C2 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
