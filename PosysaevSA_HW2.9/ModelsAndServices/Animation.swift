@@ -7,42 +7,9 @@
 
 struct DemoAnimation {
     
-    enum Curves: String {
-        
-        case easeIn,
-            easeOut,
-            easeInOut,
-            linear,
-            spring,
-            easeInSine,
-            easeOutSine,
-            easeInOutSine,
-            easeInQuad,
-            easeOutQuad,
-            easeInOutQuad,
-            easeInCubic,
-            easeOutCubic,
-            easeInOutCubic,
-            easeInQuart,
-            easeOutQuart,
-            easeInOutQuart,
-            easeInQuint,
-            easeOutQuint,
-            easeInOutQuint,
-            easeInExpo,
-            easeOutExpo,
-            easeInOutExpo,
-            easeInCirc,
-            easeOutCirc,
-            easeInOutCirc,
-            easeInBack,
-            easeOutBack,
-            easeInOutBack
-    }
-    
     let animationPrezet: String
     let force: Double
-    let curves: Curves
+    let curves: [String]
     let duration: Double
     let delay: Double
     
@@ -50,20 +17,19 @@ struct DemoAnimation {
 
 extension DemoAnimation {
     
-     static func createModels() -> [DemoAnimation] {
+    static func createModels() -> [DemoAnimation] {
         
         var prezets = [DemoAnimation]()
         let dataAnimation = DataManager.shared.animations
+        let curves = DataManager.shared.curves
         
         dataAnimation.forEach { (animation) in
             prezets.append(DemoAnimation(animationPrezet: animation,
-                                         force: 2,
-                                         curves: .easeIn,
-                                         duration: 1,
-                                         delay: 3 )
-            )
+                                         force: 1,
+                                         curves: [curves.randomElement() ?? "shake"],
+                                         duration: 3,
+                                         delay: 0.5 ))
         }
-        
-        return prezets
+        return prezets        
     }
 }

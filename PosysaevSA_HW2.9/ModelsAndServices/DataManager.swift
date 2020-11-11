@@ -37,6 +37,8 @@ class DataManager {
         "zoomOut",
         "flash"
     ]
-      
+    
+    let curves = ["spring", "linear", "easeIn", "easeOut", "easeInOut"]
+    
     private init() { }
 }

@@ -9,64 +9,63 @@ import Spring
 
 class DemoAnimationViewController: UIViewController {
     
-    static var nextIndexToButton = 1
+    static var nextIndexToButton = 0
     
     var presetsAnimation = DemoAnimation.createModels()
     
-    @IBOutlet weak var viewDemoAnimation: SpringButton!
+    // MARK: - IBOutlets
     
+    @IBOutlet weak var viewSpring: SpringView!
+    @IBOutlet weak var btnDemoAnimation: SpringButton!
     @IBOutlet weak var curveLabel: UILabel!
     @IBOutlet weak var forceLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var delayLabel: UILabel!
-    @IBOutlet weak var presetLabel: UILabel! {
-        didSet {
-            presetLabel.text = "preset: \(presetsAnimation.first?.animationPrezet ?? "")"
-            curveLabel.text = "curve: \(presetsAnimation.first?.curves.rawValue ?? "")"
-            forceLabel.text = "force: \(String(presetsAnimation.first?.force ?? 0))"
-            durationLabel.text = "duration: \(String(presetsAnimation.first?.duration ?? 0))"
-            delayLabel.text = "delay: \(String(presetsAnimation.first?.delay ?? 0))"
-        }
-    }
+    @IBOutlet weak var presetLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewDemoAnimation.setTitle("next: " + presetsAnimation[DemoAnimationViewController.nextIndexToButton].animationPrezet,
-                                   for: .normal)
+        updateLabels()
+        viewSpring.animate()
+        
+        btnDemoAnimation.setTitle("next: " + presetsAnimation[DemoAnimationViewController.nextIndexToButton + 1].animationPrezet,
+                                  for: .normal)
     }
+    
+    private func updateLabels() {
+        presetLabel.text = " preset: \(presetsAnimation[DemoAnimationViewController.nextIndexToButton].animationPrezet )"
+        curveLabel.text = " curve: \(presetsAnimation[DemoAnimationViewController.nextIndexToButton].curves.first ?? "spring")"
+        forceLabel.text = " force: \(String(presetsAnimation[DemoAnimationViewController.nextIndexToButton].force ))"
+        durationLabel.text = " duration: \(String(presetsAnimation[DemoAnimationViewController.nextIndexToButton].duration ))"
+        delayLabel.text = " delay: \(String(presetsAnimation[DemoAnimationViewController.nextIndexToButton].delay ))"
+    }
+    
+    
+    
+    // MARK: - Action
     
     @IBAction func startAnimationButton(_ sender: SpringButton) {
         
-        
-        //viewDemoAnimation.animation = ""
-        //
-        //
-        // viewDemoAnimation.animate()
-        
+        let currentAnimation = presetsAnimation[DemoAnimationViewController.nextIndexToButton]
+
+        updateLabels()
+        viewSpring.animation = currentAnimation.animationPrezet
+        viewSpring.curve = currentAnimation.curves.first ?? "shake"
+        viewSpring.damping = 2.5
+        viewSpring.velocity = 1.5
+        viewSpring.animate()
+
         if DemoAnimationViewController.nextIndexToButton < presetsAnimation.count - 1 {
             DemoAnimationViewController.nextIndexToButton += 1
         } else {
             DemoAnimationViewController.nextIndexToButton = 0
         }
+        
         let nextTitle = "next: " + presetsAnimation[DemoAnimationViewController.nextIndexToButton].animationPrezet
         sender.setTitle(nextTitle, for: .normal)
     }
     
 }
 
-extension DemoAnimationViewController {
-    
-    //    func changeBall() {
-    //        isBall = !isBall
-    //        let animation = CABasicAnimation()
-    //        let halfWidth = ballView.frame.width / 2
-    //        let cornerRadius: CGFloat = isBall ? halfWidth : 10
-    //        animation.keyPath = "cornerRadius"
-    //        animation.fromValue = isBall ? 10 : halfWidth
-    //        animation.toValue = cornerRadius
-    //        animation.duration = 0.2
-    //        ballView.layer.cornerRadius = cornerRadius
-    //        ballView.layer.add(animation, forKey: "radius")
-    //    }
-}
+

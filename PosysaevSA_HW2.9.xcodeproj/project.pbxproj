@@ -96,8 +96,8 @@
 		F98C3957255B260F008C5AA1 /* ModelsAndServices */ = {
 			isa = PBXGroup;
 			children = (
-				F98C3950255B2198008C5AA1 /* Animation.swift */,
 				F98C3954255B2499008C5AA1 /* DataManager.swift */,
+				F98C3950255B2198008C5AA1 /* Animation.swift */,
 			);
 			path = ModelsAndServices;
 			sourceTree = "<group>";
